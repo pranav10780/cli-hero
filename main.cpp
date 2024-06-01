@@ -1,22 +1,32 @@
-//we need an hero amd enemies
-//turn based cli game
 #include <iostream>
 using namespace std;
-int debug = 0;
+int debug = 1;
 
-class characters{
-  int hp;
+class characters {
+  unsigned int hp;
   string name;
-  int atk;
+  unsigned atk;
 
   public:
-    characters(int hp,int atk,string name = "Enemy"){
-      //cout << "name:" << name << "hp:" <<hp << "atk:" << atk << endl;
-      string details = "name: " + name + " hp: " + to_string(hp) + " atk: " + to_string(atk);
-      cout << details << endl;
+    characters(int hp, int atk, string name = "Enemy") : hp(hp), atk(atk), name(name) {
+      if (debug) {
+        string details = "name: " + name + " hp: " + to_string(hp) + " atk: " + to_string(atk);
+        cout << details << endl;
+      }
+    }
+
+    void display_battle(characters& player, characters& enemy) {
+      cout << "name: " << player.name << " hp: " << player.hp << " atk: " << player.atk << endl;
+      cout << "\n" << endl;
+      cout << "«" << player.name << "»\t" << "«" << enemy.name << "»" << endl;
+      cout << "\n" << endl;
+      cout << "name: " << enemy.name << " hp: " << enemy.hp << " atk: " << enemy.atk << endl;
     }
 };
 
-int main(){
-  characters player(200,60,"pranav");
+int main() {
+  characters player(200, 60, "pranav");
+  characters enemy(150, 40);
+  player.display_battle(player, enemy);
 }
+
