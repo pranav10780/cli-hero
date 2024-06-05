@@ -35,16 +35,24 @@ int main() {
   characters player(200, 60, "pranav");
   characters enemy(150, 40);
   unsigned int choice;
+  player.display_battle(player,enemy);
   while(1){
     choice = player.menu();
     if(choice==1){
       enemy.hp -= player.atk;
       cout << "Enemy's hp: " << enemy.hp << endl;
-      if(enemy.hp<=0){
+      if(enemy.hp>=0){
         cout << "Enemy gone" << endl;
       }
-    } else {
-      cout << "test";
+    } else if(choice==2){
+      cout << "Work in progress!" << endl;
+    } else if(choice==3){
+      cout << "Learn randint in cpp" << endl;
+    } else if(choice==4){
+      player.display_battle(player,enemy);
+    } else if(choice==5){
+      cout << "trying to exit." << endl;
+      return 0;
     }
   }
 }
